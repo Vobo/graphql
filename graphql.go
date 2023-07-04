@@ -73,7 +73,7 @@ func (c *Client) do(ctx context.Context, op operationType, v interface{}, variab
 		return err
 	}
 	req.Header.Set("Content-Type", "application/json")
-	req.Header.Set("Authorization", c.apiToken)
+	req.Header.Set("Authorization", fmt.Sprintf("Bearer %s", c.apiToken))
 	resp, err := ctxhttp.Do(ctx, c.httpClient, req)
 
 	if err != nil {
